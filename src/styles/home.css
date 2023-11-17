@@ -1,0 +1,32 @@
+/* .home_main_container {
+  width: 100vw;
+  height: 15%;
+} */
+
+.sw.swiper_main_1 {
+  background: url("../images/main_swiper_1.jpeg") no-repeat;
+  background-size: cover;
+  height: 40vh;
+  width: 100%;
+}
+
+/* .sw.swiper_main_1 .reservation_link>Button {
+  width: 13rem;
+  height: 4rem;
+  font-size: 1.5rem;
+} */
+
+.cards-container {
+  background-color: rgb(220, 232, 232);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 590px) {
+  .sw.swiper_main_1 {
+   height: 50vh;
+  }
+}
