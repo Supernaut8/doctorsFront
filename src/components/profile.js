@@ -6,6 +6,8 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PlaceIcon from '@mui/icons-material/Place';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Link as LinkRouter } from 'react-router-dom';
+import zIndex from "@mui/material/styles/zIndex";
+import '../styles/profile.css'
 
 function Profile() {
     return (
@@ -26,7 +28,8 @@ function Profile() {
                     pt: 10,
                     mb: 20,
                     maxWidth: '380px',
-                    opacity: 1
+                    opacity: 1,
+                    zIndex: 10,
                     // border: '1px solid black'
                     // backgroundImage: `url("/main_swiper_1.jpeg")`,
                     // backgroundSize: 'cover'
@@ -41,7 +44,8 @@ function Profile() {
                         mb: 10,
                         border: '1px solid black',
                         borderRadius: '8px',
-                        opacity: 1
+                        // zIndex: 10,
+                        // opacity: 1
                     }}
                 >
                     <LetterAvatars />

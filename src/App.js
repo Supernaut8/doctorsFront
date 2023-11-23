@@ -16,7 +16,8 @@ import Snack from './components/snackbar';
 import Profile from './components/profile';
 import MedicalAppointments from './components/medicalAppointments';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
+import userActions from './redux/actions/usersActions';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -26,6 +27,14 @@ function App() {
   const dispatch = useDispatch()
   const showNav = useSelector(store => store.storeUser.appReducer.showNav)
   const user = useSelector(store => store.storeUser.userReducer.user)
+
+const tokenSession=localStorage.getItem("tokenSession")
+useEffect(()=>{
+    if (tokenSession!==null){
+        dispatch(userActions.verifyTokenSession(tokenSession))
+      }
+      //eslint-disable-next-line
+},[])
 
   return (
     <div className="App">

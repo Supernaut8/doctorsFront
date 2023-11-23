@@ -31,8 +31,10 @@ const userActions = {
         return async (dispatch, getState) => {
 
             const user = await axios.post(`${urlBackend}/api/users/auth/signIn`, { userData })
-            console.log(user)
+            console.log("data de usuario",user)
+            //
             if (user.data.success) {
+                localStorage.setItem("tokenSession",user.data.response.tokenUser)
                 dispatch({ type: 'user', payload: user.data.response.dataUser });
             }
             dispatch({
@@ -46,6 +48,38 @@ const userActions = {
         }
 
     },
+    verifyTokenSession:(token)=>{
+            return async (dispatch,getState)=>{
+                await axios.get(
+                    'http://localhost:5000/users/auth/verifyTokenSession'
+                    ,{headers:{"Authorization":"Bearer "+token}
+                    }).then((user)=>{
+                        if(user.data.success){
+                            dispatch({type:"user",payload:user.data.reponse})
+                            dispatch({
+                                type:"message",
+                                payload:{
+                                    view:true,
+                                    message:user.data.message,
+                                    success:user.data.success
+                                }
+                            })
+                        }
+                    }).catch((error)=>{
+                        if(error.response.status===401){
+                            dispatch({
+                                type:"message",
+                                payload:{
+                                    view:true,
+                                    message:"Please sign in again",
+                                    success:false
+                                }
+                            })
+                            localStorage.removeItem("tokenSession")
+                        }
+                    })
+            }
+    }
     // SignOutUser: (closeUser) => {
 
     //     return async (dispatch, getState) => {
