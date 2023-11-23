@@ -18,13 +18,13 @@ import '../styles/AppBarMUI.css'
 import { Link as LinkRouter } from 'react-router-dom'
 
 const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insurances</LinkRouter>,
-              // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
-              <LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
-              // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
-              <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
-const settings = ['Profile',
-              <LinkRouter to="/signUp" className="links_router">Account</LinkRouter>,
-               'Logout'];
+// <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
+<LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
+// <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
+<LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
+const settings = [<LinkRouter to="/profile" className="links_router">Profile</LinkRouter>,
+  <LinkRouter to="/signUp" className="links_router">Account</LinkRouter>,
+  'Logout'];
 
 function AppBarMUI() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -66,7 +66,7 @@ function AppBarMUI() {
                 textDecoration: 'none',
               }}
             >
-              NRMC
+              DOCTOR FINDER
             </Typography>
           </LinkRouter>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -99,7 +99,7 @@ function AppBarMUI() {
               }}
             >
               {pages.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                <MenuItem key={index} onClick={handleCloseNavMenu} sx={{ backgroundColor: '#1E4D7B' }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,7 +122,7 @@ function AppBarMUI() {
               textDecoration: 'none',
             }}
           >
-            NRMC
+            DOCTOR FINDER
           </Typography>
           <Box className="btn-container" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
@@ -139,7 +139,7 @@ function AppBarMUI() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ color: '#1E4D7B', bgcolor: 'white' }} src="/broken-image.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -159,7 +159,7 @@ function AppBarMUI() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <MenuItem key={index} onClick={handleCloseUserMenu} sx={{ backgroundColor:'#1E4D7B' }}>
+                <MenuItem key={index} onClick={handleCloseUserMenu} sx={{ backgroundColor: '#1E4D7B' }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

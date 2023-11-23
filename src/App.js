@@ -13,6 +13,8 @@ import SignUpForm from './components/signUp';
 import ForgotPass from './components/forgotPass';
 import Insurances from './components/Insurances';
 import Snack from './components/snackbar';
+import Profile from './components/profile';
+import MedicalAppointments from './components/medicalAppointments';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 
@@ -48,9 +50,11 @@ function App() {
           <Route path='/Insurances' element={<Insurances />} />
           <Route path='/about_us' element={<About_us />} />
           <Route path='/reservations' element={<Reservations />} />
-          <Route path='/signIn' element={<SignInForm />} />
-          <Route path='/signUp' element={<SignUpForm />} />
+          {!user && <Route path='/signIn' element={<SignInForm />} />}
+          {!user && <Route path='/signUp' element={<SignUpForm />} />}
           <Route path='/forgotPass' element={<ForgotPass />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/medicalAppointments' element={<MedicalAppointments />} />          
           <Route path='/doctor/:id' element={<DoctorCardExtended />} />
         </Routes>
         <BottomAppBarMUI />

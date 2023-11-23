@@ -3,15 +3,20 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkRouter, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import GoogleIcon from '@mui/icons-material/Google';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
+// import { GoogleLogin } from '@react-oauth/google';
+// import { jwtDecode } from "jwt-decode";
 
 
 export default function SignUpForm() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -23,7 +28,25 @@ export default function SignUpForm() {
       from: "signUp-form"
     };
     dispatch(userActions.SignUpUser(userData))
+    navigate('/signIn')
   };
+
+  //   const googleSubmit = async (e) => {
+
+  //     const token = e.credential;
+  //     const decoded = await jwtDecode(token);
+  //     console.log(decoded)
+  //     const userData = {
+  //         email: decoded.email,
+  //         password: decoded.family_name+"AMD23google",
+  //         firstName: decoded.given_name,
+  //         lastName: decoded.family_name,
+  //         from: "google"
+  //     };
+
+  //         dispatch(userActions.SignUpUser(userData))
+  //        navigate('/signin')
+  // };
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -90,7 +113,7 @@ export default function SignUpForm() {
                 textDecoration: 'none',
               }}
             >
-              NRMC
+              DRFR
             </Typography>
           </div>
           <Typography variant="p"
@@ -193,6 +216,26 @@ export default function SignUpForm() {
               </Typography>
             </LinkRouter>
           </div>
+          <Box component={"div"}
+            sx={{
+              mt: 2,
+            }}
+          >
+            <LinkRouter className='btn_google' to='/https://www.google.com/?hl=es'>
+              <GoogleIcon sx={{ color:'white'}}/>
+              <Typography variant="p"
+                sx={{
+                  m: 2,
+                  fontFamily: 'rubik',
+                  fontSize: '16px',
+                  letterSpacing: '.3rem',
+                  color: 'white',
+                }}
+              >
+                Google
+              </Typography>
+            </LinkRouter>
+          </Box>
           <div>
             <LinkRouter className='btn_details' to='/signIn'>
               <Typography variant="p"

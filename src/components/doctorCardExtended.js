@@ -41,9 +41,9 @@ function DoctorCardExtended() {
                                 <LocalHospitalIcon sx={{ color: 'red' }} />
                                 <Typography
                                     variant="h6"
-                                    noWrap
-                                    component="a"
-                                    href="/"
+                                    // noWrap
+                                    // component="a"
+                                    // href="/"
                                     sx={{
                                         mr: 2,
                                         display: { xs: 'none', md: 'flex' },
@@ -54,7 +54,7 @@ function DoctorCardExtended() {
                                         textDecoration: 'none',
                                     }}
                                 >
-                                    NRMC
+                                    DRFR
                                 </Typography>
                             </div>
                             <div className="imgContainer">

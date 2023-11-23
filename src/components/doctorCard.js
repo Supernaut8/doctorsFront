@@ -13,20 +13,19 @@ function DoctorCard({ doctor }) {
                 <LocalHospitalIcon sx={{ color: 'red' }} />
                 <Typography
                     variant="h6"
-                    noWrap
-                    component="a"
-                    href="/"
+                    
+                    // component="a"
+                    // href="/"
                     sx={{
-                        mr: 2,
-                        display: { xs: 'none', md: 'flex' },
                         fontFamily: 'monospace',
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         color: 'inherit',
                         textDecoration: 'none',
+                        maxWidth: '180px'
                     }}
                 >
-                    NRMC
+                    DRFR
                 </Typography>
             </div>
             <div className="imgContainer">

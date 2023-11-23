@@ -2,33 +2,35 @@ import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '../styles/BottomAppBarMUI.css'
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GoogleIcon from '@mui/icons-material/Google';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function BottomAppBarMUI() {
   return (
     <MDBFooter id='footer' className='text-center text-lg-start text-muted'>
       <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
-          <span>Contactá con nuestras redes sociales:</span>
+          <span>Contact our social networks:</span>
         </div>
 
         <div>
           <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="facebook-f" />
+            <FacebookIcon />
           </a>
           <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="twitter" />
+            <TwitterIcon />
           </a>
           <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="google" />
+            <GoogleIcon />
           </a>
           <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="instagram" />
+            <InstagramIcon />
           </a>
           <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="linkedin" />
-          </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon fab icon="github" />
+            <LinkedInIcon />
           </a>
         </div>
       </section>
@@ -39,60 +41,60 @@ export default function BottomAppBarMUI() {
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon icon="gem" className="me-3" />
-                Nick Rivera Medical Center
+                DOCTOR FINDER
               </h6>
             </MDBCol>
 
             <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Contactos</h6>
+              <h6 className='text-uppercase fw-bold mb-4'>Contacts</h6>
               <p>
                 <a href='#!' className='text-reset'>
-                  Formulario de contacto
+                  Contact Form
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Reporte de incidentes
+                  Incident report
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Trabaja con nosotros
+                  Work with us
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Si querés ser proveedor
+                  If you want to be a supplier
                 </a>
               </p>
             </MDBCol>
 
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Legales</h6>
+              <h6 className='text-uppercase fw-bold mb-4'>Legal</h6>
               <p>
                 <a href='#!' className='text-reset'>
-                  Términos y condiciones
+                  Terms and Conditions
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Politica de privacidad
+                  Privacy Policy
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Defensa al consumidor (reclamos)
+                  Consumer defense (claims)
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Ayuda
+                  Help me
                 </a>
               </p>
             </MDBCol>
 
             <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Direcciones</h6>
+              <h6 className='text-uppercase fw-bold mb-4'>Addresses</h6>
               <p>
                 <MDBIcon icon="home" className="me-2" />
                 New York, NY 10012, US

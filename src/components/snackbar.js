@@ -35,7 +35,7 @@ export default function Snack() {
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
-                        hortizontal: 'center',
+                        horizontal: 'center',
                     }}
                     open={showSnackbar.view}
                     onClose={handleClose}
@@ -62,7 +62,7 @@ export default function Snack() {
                             (<>{showSnackbar.message}</>) :
                             <ul>
                                 {showSnackbar.message.map(message =>
-                                    <li>{message}</li>
+                                    <li>{message.message}</li>
                                 )}
                             </ul>
                         }

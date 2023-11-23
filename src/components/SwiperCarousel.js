@@ -71,16 +71,16 @@ export default function SwiperCarousel() {
                 </SwiperSlide>
                 <SwiperSlide>
                     <Grid container>
-                        <Grid item sm={6} lg={3}>
+                        <Grid item sm={6} xl={3}>
                             <img src={img9} alt='imagen de {img9}' />
                         </Grid>
-                        <Grid item sm={6} lg={3}>
+                        <Grid item sm={6} xl={3}>
                             <img src={img10} alt='imagen de {img10}' />
                         </Grid>
-                        <Grid item sm={6} lg={3}>
+                        <Grid item sm={6} xl={3}>
                             <img src={img11} alt='imagen de {img11}' />
                         </Grid>
-                        <Grid item sm={6} lg={3}>
+                        <Grid item sm={6} xl={3}>
                             <img src={img12} alt='imagen de {img12}' />
                         </Grid>
                     </Grid>

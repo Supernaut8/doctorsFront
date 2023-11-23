@@ -17,7 +17,7 @@ const Insurances = () => {
             >
                Our partners
             </Typography>
-            <img src={img1} alt='imagen de {img1}' />
+            <img sx={{ maxWidth: '1030px' }} src={img1} alt='imagen de {img1}' />
         </div>
     )
 }

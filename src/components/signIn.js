@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Link as LinkRouter } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import GoogleIcon from '@mui/icons-material/Google';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
 
@@ -87,7 +88,7 @@ export default function SignInForm() {
                 textDecoration: 'none'
               }}
             >
-              NRMC
+              DRFR
             </Typography>
           </div>
           <Typography variant="p"
@@ -103,20 +104,6 @@ export default function SignInForm() {
             Sign in
           </Typography>
           <div>
-            {/* <TextField
-              name="firstName"
-              required
-              id="firstName"
-              label="First name"
-              defaultValue=""
-            />
-            <TextField
-              name="lastName"
-              required
-              id="lastName"
-              label="Last name"
-              defaultValue=""
-            /> */}
             <TextField
               name="email"
               required
@@ -134,17 +121,6 @@ export default function SignInForm() {
             />
           </div>
           <div>
-            {/* <LinkRouter className='btn_details' to='/reservations'> */}
-            {/* <Button
-              variant="contained"
-              style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}
-              sx={{
-                mt: 2,
-                mb: 12
-              }}
-            >
-              sign in
-            </Button> */}
             <input
               type='submit'
               style={{
@@ -199,6 +175,26 @@ export default function SignInForm() {
               </Typography>
             </LinkRouter>
           </div>
+          <Box component={"div"}
+            sx={{
+              mt: 2,
+            }}
+          >
+            <LinkRouter className='btn_google' to='/https://www.google.com/?hl=es'>
+              <GoogleIcon sx={{ color: 'white' }} />
+              <Typography variant="p"
+                sx={{
+                  m: 2,
+                  fontFamily: 'rubik',
+                  fontSize: '16px',
+                  letterSpacing: '.3rem',
+                  color: 'white',
+                }}
+              >
+                Google
+              </Typography>
+            </LinkRouter>
+          </Box>
           <div>
             <LinkRouter className='btn_details' to='/signUp'>
               <Typography variant="p"

@@ -27,14 +27,13 @@ const userActions = {
 
         }
     },
-    SignInUser: (logedUser) => {
-        console.log("Ingreso el nuevo usuario")
+    SignInUser: (userData) => {
         return async (dispatch, getState) => {
 
-            const user = await axios.post(`${urlBackend}/api/users/auth/signIn`, { logedUser })
+            const user = await axios.post(`${urlBackend}/api/users/auth/signIn`, { userData })
             console.log(user)
             if (user.data.success) {
-                dispatch({ type: 'user', payload: user.data.response.userData });
+                dispatch({ type: 'user', payload: user.data.response.dataUser });
             }
             dispatch({
                 type: 'message',

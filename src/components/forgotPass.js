@@ -12,17 +12,17 @@ import { useDispatch } from 'react-redux';
 
 
 export default function ForgotPass() {
-      const dispatch = useDispatch()
-      const handleSubmit = (e) => {
+    const dispatch = useDispatch()
+    const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         const userData = {
-          email: data.get('email'),
-          password: data.get('password'),
-          from: "signUp-form"
+            email: data.get('email'),
+            password: data.get('password'),
+            from: "signUp-form"
         };
         dispatch(userActions.SignInUser(userData))
-      };
+    };
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
@@ -60,9 +60,10 @@ export default function ForgotPass() {
                         '& .MuiTextField-root': {
                             display: 'flex',
                             flexDirection: 'column',
-                            m: 'auto',
-                            mt: 2,
-                            mb: 2,
+                            mr: 'auto',
+                            ml: 'auto',
+                            mt: 5,
+                            mb: 5,
                             width: '25ch',
                             backgroundColor: 'white',
                             color: 'green'
@@ -75,11 +76,7 @@ export default function ForgotPass() {
                         <LocalHospitalIcon sx={{ color: 'red' }} />
                         <Typography
                             variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
                             sx={{
-                                display: { xs: 'none', md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -87,11 +84,10 @@ export default function ForgotPass() {
                                 textDecoration: 'none'
                             }}
                         >
-                            NRMC
+                            DRFR
                         </Typography>
                     </div>
                     <Typography variant="p"
-                        noWrap
                         sx={{
                             fontFamily: 'rubik',
                             fontSize: '30px',
@@ -111,14 +107,21 @@ export default function ForgotPass() {
                             defaultValue=""
                         />
                     </div>
-                    <div>
+                    <Box component={"div"}
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent:'center',
+                            mb: 5,
+                            mt: 10
+                        }}
+                    >
                         <LinkRouter className='btn_cancel' to='/signIn'>
                             <Button
                                 variant="contained"
                                 style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}
                                 sx={{
-                                    mt: 2,
-                                    mb: 12
+                                    m: 2
                                 }}
                             >
                                 Cancel
@@ -130,8 +133,7 @@ export default function ForgotPass() {
                                 variant="contained"
                                 style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}
                                 sx={{
-                                    mt: 2,
-                                    mb: 12
+                                    m: 2
                                 }}
                             >
                                 Next
@@ -150,7 +152,7 @@ export default function ForgotPass() {
             >
             </input> */}
 
-                    </div>
+                    </Box>
                 </Box>
             </Box>
         </Box>
