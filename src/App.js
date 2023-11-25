@@ -14,6 +14,7 @@ import ForgotPass from './components/forgotPass';
 import Insurances from './components/Insurances';
 import Snack from './components/snackbar';
 import Profile from './components/profile';
+import Profile2 from './components/profile2';
 import MedicalAppointments from './components/medicalAppointments';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -27,21 +28,21 @@ function App() {
   const dispatch = useDispatch()
   const showNav = useSelector(store => store.storeUser.appReducer.showNav)
   const user = useSelector(store => store.storeUser.userReducer.user)
-
-const tokenSession=localStorage.getItem("tokenSession")
-useEffect(()=>{
-    if (tokenSession!==null){
-        dispatch(userActions.verifyTokenSession(tokenSession))
-      }
-      //eslint-disable-next-line
-},[])
+  const tokenSession = localStorage.getItem("tokenSession")
+  
+  useEffect(() => {
+    if (tokenSession !== null) {
+      dispatch(userActions.verifyTokenSession(tokenSession))
+    }
+    //eslint-disable-next-line
+  }, [])
 
   return (
     <div className="App">
 
       <Snack />
       <div className='nav_menuOpen' onMouseOver={() => dispatch({ type: "showNav", payload: true })}></div>
-      
+
       <CSSTransition
         in={showNav}
         timeout={500} // Duración de la animación en milisegundos
@@ -63,7 +64,8 @@ useEffect(()=>{
           {!user && <Route path='/signUp' element={<SignUpForm />} />}
           <Route path='/forgotPass' element={<ForgotPass />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/medicalAppointments' element={<MedicalAppointments />} />          
+          <Route path='/profile' element={<Profile2 />} />
+          <Route path='/medicalAppointments' element={<MedicalAppointments />} />
           <Route path='/doctor/:id' element={<DoctorCardExtended />} />
         </Routes>
         <BottomAppBarMUI />

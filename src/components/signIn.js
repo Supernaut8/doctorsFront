@@ -9,6 +9,8 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import GoogleIcon from '@mui/icons-material/Google';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 
 
@@ -20,10 +22,40 @@ export default function SignInForm() {
     const userData = {
       email: data.get('email'),
       password: data.get('password'),
-      from: "signUp-form"
+      from: "signUp-form",
+      aplication: "doctors"
     };
     dispatch(userActions.SignInUser(userData))
   };
+
+  // AGREGADO DEL BOTON GOOGLE
+  // useEffect(() => {
+  //   google.accounts.id.initialize({
+  //     client_id: "743189399210-8boo2bhpjm8ho57fc3tp53f0lekda265.apps.googleusercontent.com",
+  //     callback: googleSubmit
+  //   });
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("buttonDiv"),
+  //     { theme: "outline", size: "large" }  // customization attributes
+  //   );
+  //   google.accounts.id.prompt(); // also display the One Tap dialog
+  // })
+
+  const googleSubmit = async (e) => {
+    const token = e.credential;
+    const decoded = await jwtDecode(token);
+    console.log(decoded)
+    const userData = {
+      email: decoded.email,
+      password: decoded.family_name + "AMD23google",
+      from: "google"
+    };
+    dispatch(userActions.SignInUser(userData))
+    
+  };
+  // AGREGADO DEL BOTON GOOGLE
+
+
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   return (
@@ -175,7 +207,7 @@ export default function SignInForm() {
               </Typography>
             </LinkRouter>
           </div>
-          <Box component={"div"}
+          {/* <Box component={"div"}
             sx={{
               mt: 2,
             }}
@@ -194,6 +226,21 @@ export default function SignInForm() {
                 Google
               </Typography>
             </LinkRouter>
+          </Box> */}
+          <Box component={"div"}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              mt: 2
+            }}
+          >
+            <GoogleLogin
+              onSuccess={googleSubmit}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />;
           </Box>
           <div>
             <LinkRouter className='btn_details' to='/signUp'>

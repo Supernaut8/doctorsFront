@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import { Link as LinkRouter, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -9,8 +8,8 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import GoogleIcon from '@mui/icons-material/Google';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
-// import { GoogleLogin } from '@react-oauth/google';
-// import { jwtDecode } from "jwt-decode";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 
 export default function SignUpForm() {
@@ -31,22 +30,36 @@ export default function SignUpForm() {
     navigate('/signIn')
   };
 
-  //   const googleSubmit = async (e) => {
 
-  //     const token = e.credential;
-  //     const decoded = await jwtDecode(token);
-  //     console.log(decoded)
-  //     const userData = {
-  //         email: decoded.email,
-  //         password: decoded.family_name+"AMD23google",
-  //         firstName: decoded.given_name,
-  //         lastName: decoded.family_name,
-  //         from: "google"
-  //     };
+  // AGREGADO DEL BOTON GOOGLE
+  // useEffect(() => {
+  //   google.accounts.id.initialize({
+  //     client_id: "743189399210-8boo2bhpjm8ho57fc3tp53f0lekda265.apps.googleusercontent.com",
+  //     callback: googleSubmit
+  //   });
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("buttonDiv"),
+  //     { theme: "outline", size: "large" }  // customization attributes
+  //   );
+  //   google.accounts.id.prompt(); // also display the One Tap dialog
+  // })
 
-  //         dispatch(userActions.SignUpUser(userData))
-  //        navigate('/signin')
-  // };
+  const googleSubmit = async (e) => {
+    const token = e.credential;
+    const decoded = await jwtDecode(token);
+    console.log(decoded)
+    const userData = {
+      email: decoded.email,
+      password: decoded.family_name + "AMD23google",
+      firstName: decoded.given_name,
+      lastName: decoded.family_name,
+      from: "google"
+    };
+    dispatch(userActions.SignUpUser(userData))
+    navigate('/signin')
+  };
+  // AGREGADO DEL BOTON GOOGLE
+
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -56,8 +69,6 @@ export default function SignUpForm() {
       flexDirection: 'row',
       justifyContent: 'space-around',
       pb: 15,
-      // alignItems: 'center',
-      // p: 15,
       width: '100vw',
       backgroundImage: `url("/main_swiper_1.jpeg")`,
       backgroundSize: 'cover',
@@ -69,8 +80,6 @@ export default function SignUpForm() {
           alignItems: 'center',
           mt: 10,
           backgroundColor: '#1E4D7B',
-          // ml: 5,
-          // mr: 20,
           width: '40ch',
           maxHeight: '700px',
           border: '1px solid black',
@@ -177,28 +186,6 @@ export default function SignUpForm() {
             {/* <Button variant="contained" style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}>sign up</Button> */}
             {/* </LinkRouter> */}
           </div>
-          <div
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              backgroundColor: 'white'
-            }}>
-            <Checkbox sx={{
-              backgroundColor: 'white'
-            }}{...label} />
-            <Typography variant="span"
-              sx={{
-                ml: 2,
-                fontFamily: 'rubik',
-                fontSize: '16px',
-                letterSpacing: '.3rem',
-                color: 'white',
-              }}
-            >
-              Remember me
-            </Typography>
-          </div>
           <div>
             <LinkRouter className='btn_forgotPass' to='/forgotPass'>
               <Typography variant="p"
@@ -218,26 +205,21 @@ export default function SignUpForm() {
           </div>
           <Box component={"div"}
             sx={{
-              mt: 2,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              mt: 2
             }}
           >
-            <LinkRouter className='btn_google' to='/https://www.google.com/?hl=es'>
-              <GoogleIcon sx={{ color:'white'}}/>
-              <Typography variant="p"
-                sx={{
-                  m: 2,
-                  fontFamily: 'rubik',
-                  fontSize: '16px',
-                  letterSpacing: '.3rem',
-                  color: 'white',
-                }}
-              >
-                Google
-              </Typography>
-            </LinkRouter>
+            <GoogleLogin
+              onSuccess={googleSubmit}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />;
           </Box>
           <div>
-            <LinkRouter className='btn_details' to='/signIn'>
+            <LinkRouter className='btn_signIn' to='/signIn'>
               <Typography variant="p"
                 sx={{
                   display: 'flex',

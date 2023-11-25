@@ -24,7 +24,7 @@ const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insu
 <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
 const settings = [<LinkRouter to="/profile" className="links_router">Profile</LinkRouter>,
   <LinkRouter to="/signUp" className="links_router">Account</LinkRouter>,
-  'Logout'];
+  <LinkRouter to="/profile2" className="links_router">Logout</LinkRouter>];
 
 function AppBarMUI() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -53,7 +53,6 @@ function AppBarMUI() {
             <LocalHospitalIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'red' }} />
             <Typography
               variant="h6"
-              noWrap
               component="a"
               href="/"
               sx={{
@@ -63,7 +62,7 @@ function AppBarMUI() {
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
-                textDecoration: 'none',
+                textDecoration: 'none'                
               }}
             >
               DOCTOR FINDER
@@ -113,7 +112,7 @@ function AppBarMUI() {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'flex', md: 'none', flexWrap: 'wrap' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
