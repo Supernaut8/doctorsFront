@@ -28,13 +28,14 @@ const userActions = {
         }
     },
     SignInUser: (logedUser) => {
-        console.log("Ingreso el nuevo usuario")
+    
         return async (dispatch, getState) => {
 
             const user = await axios.post(`${urlBackend}/api/users/auth/signIn`, { logedUser })
-            console.log(user)
             if (user.data.success) {
-                dispatch({ type: 'user', payload: user.data.response.userData });
+                localStorage.setItem("tokenSession",user.data.response.tokenUser)
+        
+                dispatch({ type: 'user', payload: user.data.response.dataUser });
             }
             dispatch({
                 type: 'message',
@@ -47,6 +48,42 @@ const userActions = {
         }
 
     },
+    VerifyTokenSession:(tokenSession)=>{
+        return async (dispatch,getstate)=>{
+            await axios.get(`${urlBackend}/api/users/auth/verifyToken`,
+            {headers:{"Authorization": "Bearer " + tokenSession}
+            }).then(user=>{
+                if(user.data.success){
+                    dispatch({type:"user",payload:user.data.response})
+                    dispatch({
+                        type:"message",
+                        payload:{
+                            view:true,
+                            message:user.data.message,
+                            success:user.data.success                        
+
+                        }
+                    })
+                }else{
+                    localStorage.removeItem("tokenSession")
+
+                }
+            }).catch(error=>{
+                if(error.response.status===401){
+                    dispatch({
+                        type:"message",
+                        payload:{
+                            view:true,
+                            message:"Session expired, please again signIn",
+                            success:false
+                        }
+                    })
+                    localStorage.removeItem("tokenSession")
+                }
+            })
+        }
+        
+    }
     // SignOutUser: (closeUser) => {
 
     //     return async (dispatch, getState) => {
