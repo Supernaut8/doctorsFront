@@ -35,7 +35,7 @@ export default function Snack() {
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
-                        hortizontal: 'center',
+                        horizontal: 'center',
                     }}
                     open={showSnackbar.view}
                     onClose={handleClose}

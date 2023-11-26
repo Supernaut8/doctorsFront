@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
+// import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import { Link as LinkRouter } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -23,7 +23,7 @@ export default function ForgotPass() {
         };
         dispatch(userActions.SignInUser(userData))
       };
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    // const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
         <Box className="containerSignIn" sx={{

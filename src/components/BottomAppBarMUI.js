@@ -6,7 +6,7 @@ import '../styles/BottomAppBarMUI.css'
 export default function BottomAppBarMUI() {
   return (
     <MDBFooter id='footer' className='text-center text-lg-start text-muted'>
-      <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+      {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
           <span>Contactá con nuestras redes sociales:</span>
         </div>
@@ -31,7 +31,7 @@ export default function BottomAppBarMUI() {
             <MDBIcon fab icon="github" />
           </a>
         </div>
-      </section>
+      </section> */}
 
       <section className=''>
         <MDBContainer className='text-center text-md-start mt-5'>
@@ -69,7 +69,7 @@ export default function BottomAppBarMUI() {
 
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Legales</h6>
-              <p>
+              <p className='text-reset'>
                 <a href='#!' className='text-reset'>
                   Términos y condiciones
                 </a>
