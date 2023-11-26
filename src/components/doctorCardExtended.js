@@ -29,6 +29,7 @@ function DoctorCardExtended() {
             .then((res) => res.json())
             .then((doctorData) => setDoctor(doctorData.doctor))
             .catch((err) => err);
+           // eslint-disable-next-line 
     }, [])
 
     return (

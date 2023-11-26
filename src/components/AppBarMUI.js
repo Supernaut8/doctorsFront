@@ -16,17 +16,31 @@ import MenuItem from '@mui/material/MenuItem';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import '../styles/AppBarMUI.css'
 import { Link as LinkRouter } from 'react-router-dom'
-
-const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insurances</LinkRouter>,
-              // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
-              <LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
-              // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
-              <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
-const settings = ['Profile',
-              <LinkRouter to="/signUp" className="links_router">Account</LinkRouter>,
-               'Logout'];
+import {useSelector} from "react-redux"
 
 function AppBarMUI() {
+  
+  const userExist=useSelector(storage=>storage.storeUser.userReducer.user)
+  const settingInitials=[ 
+    <LinkRouter to="/profile" className="links_router">Profile</LinkRouter>,
+    <LinkRouter to="/signIn" className="links_router">SignIn</LinkRouter>,
+    <LinkRouter to="/signUp" className="links_router">SignUp</LinkRouter>,
+  ];
+  const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insurances</LinkRouter>,
+                // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
+                <LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
+                // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
+                <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
+  
+  const settings =!userExist?settingInitials.filter(setting=>setting.props.children!=="Profile")
+                              : settingInitials.filter(setting=>setting.props.children!=="SignIn" && setting.props.children!=="SignUp")
+                           
+  const lettersName=userExist? (userExist.fullName.split(" ")).map(word=>word[0].toUpperCase()).join(""): "T"
+  
+  
+
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -100,7 +114,7 @@ function AppBarMUI() {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" sx={{color:"green"}}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -129,7 +143,7 @@ function AppBarMUI() {
               <Button
                 key={index}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
@@ -139,7 +153,7 @@ function AppBarMUI() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              {!userExist?  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />:<Avatar>{lettersName}</Avatar>}
               </IconButton>
             </Tooltip>
             <Menu
