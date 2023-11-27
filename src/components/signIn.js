@@ -9,7 +9,8 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
 
-
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 export default function SignInForm() {
   const dispatch = useDispatch()
@@ -24,6 +25,21 @@ export default function SignInForm() {
     dispatch(userActions.SignInUser(userData))
   };
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+  // AGREGADO DEL BOTON GOOGLE
+  const googleSubmit = async (e) => {
+    const token = e.credential;
+    const decoded = await jwtDecode(token);
+    console.log(decoded)
+    const userData = {
+      email: decoded.email,
+      password: decoded.family_name + "AMD23google",
+      from: "google"
+    };
+    dispatch(userActions.SignInUser(userData))
+    
+  };
+  // AGREGADO DEL BOTON GOOGLE
 
   return (
     <Box className="containerSignIn" sx={{
@@ -87,7 +103,7 @@ export default function SignInForm() {
                 textDecoration: 'none'
               }}
             >
-              NRMC
+              DRFR
             </Typography>
           </div>
           <Typography variant="p"
@@ -199,6 +215,21 @@ export default function SignInForm() {
               </Typography>
             </LinkRouter>
           </div>
+          <Box component={"div"}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              mt: 2
+            }}
+          >
+            <GoogleLogin
+              onSuccess={googleSubmit}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />;
+          </Box>
           <div>
             <LinkRouter className='btn_details' to='/signUp'>
               <Typography variant="p"

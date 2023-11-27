@@ -3,14 +3,18 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkRouter, useNavigate } from 'react-router-dom';
 
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import userActions from '../redux/actions/usersActions';
 import { useDispatch } from 'react-redux';
 
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+
 
 export default function SignUpForm() {
+const navigate=useNavigate()
   const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +28,23 @@ export default function SignUpForm() {
     };
     dispatch(userActions.SignUpUser(userData))
   };
+
+  // AGREGADO DEL BOTON GOOGLE
+  const googleSubmit = async (e) => {
+    const token = e.credential;
+    const decoded = await jwtDecode(token);
+    console.log(decoded)
+    const userData = {
+      email: decoded.email,
+      password: decoded.family_name + "AMD23google",
+      firstName: decoded.given_name,
+      lastName: decoded.family_name,
+      from: "google"
+    };
+    dispatch(userActions.SignUpUser(userData))
+    navigate('/signin')
+  };
+  // AGREGADO DEL BOTON GOOGLE
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -90,7 +111,7 @@ export default function SignUpForm() {
                 textDecoration: 'none',
               }}
             >
-              NRMC
+              DRFR
             </Typography>
           </div>
           <Typography variant="p"
@@ -193,6 +214,21 @@ export default function SignUpForm() {
               </Typography>
             </LinkRouter>
           </div>
+          <Box component={"div"}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              mt: 2
+            }}
+          >
+            <GoogleLogin
+              onSuccess={googleSubmit}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />;
+          </Box>
           <div>
             <LinkRouter className='btn_details' to='/signIn'>
               <Typography variant="p"

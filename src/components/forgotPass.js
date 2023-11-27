@@ -87,7 +87,7 @@ export default function ForgotPass() {
                                 textDecoration: 'none'
                             }}
                         >
-                            NRMC
+                            DRFR
                         </Typography>
                     </div>
                     <Typography variant="p"

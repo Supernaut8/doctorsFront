@@ -61,7 +61,6 @@ const userActions = {
                             view:true,
                             message:user.data.message,
                             success:user.data.success                        
-
                         }
                     })
                 }else{
@@ -83,25 +82,18 @@ const userActions = {
             })
         }
         
-    }
-    // SignOutUser: (closeUser) => {
+    },
+    SignOutUser: (closeUser) => {
 
-    //     return async (dispatch, getState) => {
+        return async (dispatch, getState) => {
 
-    //         const user = await axios.post(`${urlBackend}/api/auth/signOut`, { closeUser })
-    //         localStorage.removeItem('token')
-    //         dispatch({ type: 'user', payload: null });
-    //         return user
-    //     }
+            const user = await axios.post(`${urlBackend}/api/auth/signOut`, { closeUser })
+            localStorage.removeItem('token')
+            dispatch({ type: 'user', payload: null });
+            return user
+        }
 
-    // },
-    // VerificarToken: (token) => {
-    //     return async (dispatch, getState) => {
-    //         await axios.get(`${urlBackend}/api/auth/signInToken`, {
-                
-    //         })
-    //     }
-    // }
+    },
 }
 
 export default userActions;

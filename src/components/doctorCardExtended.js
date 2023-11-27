@@ -55,7 +55,7 @@ function DoctorCardExtended() {
                                         textDecoration: 'none',
                                     }}
                                 >
-                                    NRMC
+                                    DRFR
                                 </Typography>
                             </div>
                             <div className="imgContainer">

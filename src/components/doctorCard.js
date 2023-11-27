@@ -27,7 +27,7 @@ function DoctorCard({ doctor }) {
                         textDecoration: 'none',
                     }}
                 >
-                    NRMC
+                    DRFR
                 </Typography>
             </div>
             <div className="imgContainer">
@@ -36,11 +36,6 @@ function DoctorCard({ doctor }) {
             <div className="doctorDescription">
                 <p className="fullName">{doctor.name} {doctor.lastName}</p>
                 <p className="speciality">{doctor.specialty}</p>
-                {/* <p className="license">{doctor.license}</p>
-                <p className="name">Name:</p>
-                <p className="lastName">LastName:</p>
-                <p className="speciality">Speciality:</p>
-                <p className="dni">DNI:</p> */}
             </div>
             <div className="btn_container">
                 <LinkRouter  to={`/doctorExtend/${doctor._id}`}>
