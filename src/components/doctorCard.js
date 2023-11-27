@@ -5,10 +5,11 @@ import Typography from '@mui/material/Typography';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import img1 from '../images/ramdonMedics.png';
 
+import "../styles/doctorCard.css"
 
 function DoctorCard({ doctor }) {
     return (
-        <>
+        <div className="container_doctor">
             <div className="logoContainer">
                 <LocalHospitalIcon sx={{ color: 'red' }} />
                 <Typography
@@ -41,12 +42,17 @@ function DoctorCard({ doctor }) {
                 <p className="speciality">Speciality:</p>
                 <p className="dni">DNI:</p> */}
             </div>
-            <div className="btnContainer">
-                <LinkRouter className='btn_details' to={`/doctor/${doctor._id}`}>
+            <div className="btn_container">
+                <LinkRouter  to={`/doctorExtend/${doctor._id}`}>
+                    {/* <button className="buttons_cards">Details</button> */}
                     <Button variant="contained" style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}>Details</Button>
                 </LinkRouter>
+                <LinkRouter className='btn_details' to={`/doctorExtend/${doctor._id}`}>
+                    <Button variant="contained" style={{ fontFamily: 'Open Sans', backgroundColor: 'red' }}>Plans</Button>
+                    {/* <button className="buttons_cards button_plans">Plans</button> */}
+                </LinkRouter>
             </div>
-        </>
+        </div>
     )
 }
 

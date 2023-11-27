@@ -4,10 +4,10 @@
     height: 100%;
 }
 
-.card-Detail {
+/* .card-Detail {
     background-color: rgb(220, 232, 232);
     width: 100vw;
-}
+} */
 
 .grid-cards {
     margin: 20px 0;
@@ -22,8 +22,7 @@
     border: 1px solid black;
     border-radius: 10px;
     background-color: #1E4D7B;
-    max-width: 500px;
-    height: auto;
+ 
 }
 
 .logoContainer {

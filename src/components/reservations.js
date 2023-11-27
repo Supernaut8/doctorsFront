@@ -55,7 +55,7 @@ function Reservations() {
                     Search by specialty
                 </Typography>
             </div>
-            <input type="text" onChange={ (e) => setSearchValue(e.target.value)}/> 
+            <input type="text" className="input_search" onChange={ (e) => setSearchValue(e.target.value)}/> 
             <Grid container className="grid-cards">
                 {filteredDoctors.map((doctor, index) => (
                     <Grid item key={index} className="grid-card">

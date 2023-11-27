@@ -25,6 +25,7 @@ function AppBarMUI() {
     <LinkRouter to="/profile" className="links_router">Profile</LinkRouter>,
     <LinkRouter to="/signIn" className="links_router">SignIn</LinkRouter>,
     <LinkRouter to="/signUp" className="links_router">SignUp</LinkRouter>,
+    <LinkRouter to="/" className="links_router">LogOut</LinkRouter>
   ];
   const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insurances</LinkRouter>,
                 // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
@@ -32,13 +33,31 @@ function AppBarMUI() {
                 // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
                 <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
   
-  const settings =!userExist?settingInitials.filter(setting=>setting.props.children!=="Profile")
+  const settings =!userExist?settingInitials.filter(setting=>setting.props.children!=="Profile" && setting.props.children!=="LogOut")
                               : settingInitials.filter(setting=>setting.props.children!=="SignIn" && setting.props.children!=="SignUp")
                            
-  const lettersName=userExist? (userExist.fullName.split(" ")).map(word=>word[0].toUpperCase()).join(""): "T"
+  const lettersName=userExist? (userExist.fullName.split(" ")).map(word=>word[0].toUpperCase()).join(""): ""
   
   
-
+  function stringToColor(string) {
+    let hash = 0;
+    let i;
+  
+    /* eslint-disable no-bitwise */
+    for (i = 0; i < string.length; i += 1) {
+      hash = string.charCodeAt(i) + ((hash << 5) - hash);
+    }
+  
+    let color = '#';
+  
+    for (i = 0; i < 3; i += 1) {
+      const value = (hash >> (i * 8)) & 0xff;
+      color += `00${value.toString(16)}`.slice(-2);
+    }
+    /* eslint-enable no-bitwise */
+  
+    return color;
+  }
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -153,7 +172,7 @@ function AppBarMUI() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {!userExist?  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />:<Avatar>{lettersName}</Avatar>}
+              {!userExist?  <Avatar/> :<Avatar  >{lettersName}</Avatar>}
               </IconButton>
             </Tooltip>
             <Menu

@@ -62,7 +62,7 @@ function App() {
        {!user  && <Route path='/signIn' element={<SignInForm />} />}
           {!user && <Route path='/signUp' element={<SignUpForm />} />}
           <Route path='/forgotPass' element={<ForgotPass />} />
-          <Route path='/doctor/:id' element={<DoctorCardExtended />} />
+          <Route path='/doctorExtend/:id' element={<DoctorCardExtended />} />
           <Route path='/profile' element ={<Profile/>}/>
         </Routes>
         <BottomAppBarMUI />

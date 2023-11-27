@@ -8,8 +8,8 @@ import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import img1 from '../images/ramdonMedics.png';
-import "../styles/reservations.css";
-
+// import "../styles/reservations.css";
+import "../styles/doctorCardExtend.css"
 // useEffect(() => {
 //     GetDoctor()
 //         .then((doctorData) => {
@@ -65,10 +65,9 @@ function DoctorCardExtended() {
                                 <p className="fullName">{doctor.name} {doctor.lastName}</p>
                                 <p className="speciality">{doctor.specialty}</p>
                                 <p className="description">{doctor.description}</p>
-                                <p className="image">{doctor.image}</p>
                                 <p className="dni">DNI: {doctor.dni}</p>
                                 <p className="license">License: {doctor.license}</p>
-                                <p className="meetCost">${doctor.meetCost}</p>
+                                <p className="meetCost" >${doctor.meetCost}</p>
                             </div>
                             <div className="btnContainer">
                                 <LinkRouter className='btn_details' to="/Reservations">
