@@ -16,46 +16,53 @@ import MenuItem from '@mui/material/MenuItem';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import '../styles/AppBarMUI.css'
 import { Link as LinkRouter } from 'react-router-dom'
-import {useSelector} from "react-redux"
-
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import userActions from "../redux/actions/usersActions"
 function AppBarMUI() {
-  
-  const userExist=useSelector(storage=>storage.storeUser.userReducer.user)
-  const settingInitials=[ 
+
+  const dispatch = useDispatch()
+
+  const userExist = useSelector(storage => storage.storeUser.userReducer.user);
+
+ 
+  const handlerLogOut = (e) => {
+    dispatch(userActions.SignOutUser(e))
+  }
+  const settingInitials = [
     <LinkRouter to="/profile" className="links_router">Profile</LinkRouter>,
     <LinkRouter to="/signIn" className="links_router">SignIn</LinkRouter>,
     <LinkRouter to="/signUp" className="links_router">SignUp</LinkRouter>,
-    <LinkRouter to="/" className="links_router">LogOut</LinkRouter>
+    <LinkRouter to="/" className="links_router" onClick={handlerLogOut}>LogOut</LinkRouter>
   ];
   const pages = [<LinkRouter to="/Insurances" className="links_router">Health Insurances</LinkRouter>,
-                // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
-                <LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
-                // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
-                <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
-  
-  const settings =!userExist?settingInitials.filter(setting=>setting.props.children!=="Profile" && setting.props.children!=="LogOut")
-                              : settingInitials.filter(setting=>setting.props.children!=="SignIn" && setting.props.children!=="SignUp")
-                           
-                            
-  const lettersName=""// (userExist.fullName.split(" ")).map(word=>word[0].toUpperCase()).join(""): "T" 
+  // <LinkRouter to="/boletin" className="links_router">Boletín institucional</LinkRouter> ,
+  <LinkRouter to="/about_us" className="links_router">About us</LinkRouter>,
+  // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
+  <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
 
-  function stringToColor(string){
+  const settings =userExist==null? settingInitials.filter(setting => setting.props.children !== "Profile" && setting.props.children !== "LogOut")
+    : settingInitials.filter(setting => setting.props.children !== "SignIn" && setting.props.children !== "SignUp")
+    console.log(userExist)
+    const lettersName = userExist ? "!kdsaf" : "";
+  // (userExist.fullName.split(" ")).map(word => word[0].toUpperCase()).join("")
+  function stringToColor(string) {
     let hash = 0;
     let i;
-  
+
     /* eslint-disable no-bitwise */
     for (i = 0; i < string.length; i += 1) {
       hash = string.charCodeAt(i) + ((hash << 5) - hash);
     }
-  
+
     let color = '#';
-  
+
     for (i = 0; i < 3; i += 1) {
       const value = (hash >> (i * 8)) & 0xff;
       color += `00${value.toString(16)}`.slice(-2);
     }
     /* eslint-enable no-bitwise */
-  
+
     return color;
   }
 
@@ -80,98 +87,98 @@ function AppBarMUI() {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1E4D7B' }}>
-    <Container maxWidth="xl" className='navContainer'>
-      <Toolbar className='appBar' disableGutters>
-        <LinkRouter className="links_router" to="/">
-          <LocalHospitalIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'red' }} />
+      <Container maxWidth="xl" className='navContainer'>
+        <Toolbar className='appBar' disableGutters>
+          <LinkRouter className="links_router" to="/">
+            <LocalHospitalIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'red' }} />
+            <Typography
+              variant="h6"
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >
+              DOCTOR FINDER
+            </Typography>
+          </LinkRouter>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu} sx={{ backgroundColor: '#1E4D7B' }}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <LocalHospitalIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'red' }} />
           <Typography
-            variant="h6"
+            variant="h5"
+            noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: 'flex', md: 'none', flexWrap: 'wrap' },
+              flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none'                
+              textDecoration: 'none',
             }}
           >
             DOCTOR FINDER
           </Typography>
-        </LinkRouter>
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-            }}
-          >
+          <Box className="btn-container" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
-              <MenuItem key={index} onClick={handleCloseNavMenu} sx={{ backgroundColor: '#1E4D7B' }}>
-                <Typography textAlign="center">{page}</Typography>
-              </MenuItem>
+              <Button
+                key={index}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
             ))}
-          </Menu>
-        </Box>
-        <LocalHospitalIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'red' }} />
-        <Typography
-          variant="h5"
-          noWrap
-          component="a"
-          href="/"
-          sx={{
-            mr: 2,
-            display: { xs: 'flex', md: 'none', flexWrap: 'wrap' },
-            flexGrow: 1,
-            fontFamily: 'monospace',
-            fontWeight: 700,
-            letterSpacing: '.3rem',
-            color: 'inherit',
-            textDecoration: 'none',
-          }}
-        >
-          DOCTOR FINDER
-        </Typography>
-        <Box className="btn-container" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page, index) => (
-            <Button
-              key={index}
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              {page}
-            </Button>
-          ))}
-        </Box>
+          </Box>
 
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {!userExist?  <Avatar/> :<Avatar  >{lettersName}</Avatar>}
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {userExist!==null ? <Avatar /> : <Avatar sx={{ bgcolor: stringToColor(lettersName) }} >{lettersName}</Avatar>}
               </IconButton>
             </Tooltip>
             <Menu
@@ -191,7 +198,7 @@ function AppBarMUI() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <MenuItem key={index} onClick={handleCloseUserMenu} sx={{ backgroundColor:'#1E4D7B' }}>
+                <MenuItem key={index} onClick={handleCloseUserMenu} sx={{ backgroundColor: '#1E4D7B' }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
