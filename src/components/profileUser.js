@@ -1,28 +1,31 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Avatar, Grid } from "@mui/material";
-import { MenuItem } from "@mui/base";
-export function Profile() {
-    const user = useSelector(store => store.storeUser.userReducer.user)
-    console.log("user de profile: ", user)
-    return (
-        <Grid container maxWidth="lg"
+import {Box, Typography} from "@mui/material"
 
+export function Profile() {
+    
+    const user = useSelector(store => store.storeUser.userReducer.user)
+
+    return (
+            <Grid container 
             direction="row"
             justifyContent="center"
             alignItems="center"
-        >
-            <Grid item xs={4} md={5}>
-                <Avatar />
+ 
+            border="solid red"
+            height={500}>
+                <Box gridColum="span 4" bgcolor={"blue"} height={400}>
+                    
+                <Avatar/>{user.fullName}
+                    {user.email}
+                 </Box>
+                <Grid item bgcolor={"green"}>
+                    telefono
+                </Grid>
+              
             </Grid>
-            <Grid item xs={4} md={5}>
-                nombre
-            </Grid>
-            <Grid item xs={4} md={5}>
-                plains suscribed
-            </Grid>
-
-        </Grid>)
-
+    );
+       
 
 }

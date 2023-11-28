@@ -17,7 +17,6 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import '../styles/AppBarMUI.css'
 import { Link as LinkRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
 import userActions from "../redux/actions/usersActions"
 function AppBarMUI() {
 
@@ -41,8 +40,9 @@ function AppBarMUI() {
   // <LinkRouter to="/Consultas" className="links_router">Consultas</LinkRouter>,
   <LinkRouter to="/Reservations" className="links_router">Reservations</LinkRouter>];
 
-  const settings =userExist==null? settingInitials.filter(setting => setting.props.children !== "Profile" && setting.props.children !== "LogOut")
-    : settingInitials.filter(setting => setting.props.children !== "SignIn" && setting.props.children !== "SignUp")
+  const settings =userExist?  settingInitials.filter(setting => setting.props.children !== "SignIn" && setting.props.children !== "SignUp")
+  :settingInitials.filter(setting => setting.props.children !== "Profile" && setting.props.children !== "LogOut")
+  
     console.log(userExist)
     const lettersName = userExist ?   (userExist.fullName.split(" ")).map(word => word[0].toUpperCase()).join(""):""
   function stringToColor(string) {

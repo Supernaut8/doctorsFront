@@ -88,10 +88,10 @@ const userActions = {
 
         return async (dispatch, getState) => {
 
-            const user = await axios.post(`${urlBackend}/api/auth/signOut`, { closeUser })
+            // const user = await axios.post(`${urlBackend}/api/auth/signOut`, { closeUser })
             localStorage.removeItem('token')
             dispatch({ type: 'user', payload: null });
-            return user
+            // return user
         }
 
     },
