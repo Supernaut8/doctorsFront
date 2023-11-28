@@ -44,8 +44,7 @@ function AppBarMUI() {
   const settings =userExist==null? settingInitials.filter(setting => setting.props.children !== "Profile" && setting.props.children !== "LogOut")
     : settingInitials.filter(setting => setting.props.children !== "SignIn" && setting.props.children !== "SignUp")
     console.log(userExist)
-    const lettersName = userExist ? "!kdsaf" : "";
-  // (userExist.fullName.split(" ")).map(word => word[0].toUpperCase()).join("")
+    const lettersName = userExist ?   (userExist.fullName.split(" ")).map(word => word[0].toUpperCase()).join(""):""
   function stringToColor(string) {
     let hash = 0;
     let i;
@@ -178,7 +177,7 @@ function AppBarMUI() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {userExist!==null ? <Avatar /> : <Avatar sx={{ bgcolor: stringToColor(lettersName) }} >{lettersName}</Avatar>}
+                {userExist ?  <Avatar sx={{ bgcolor: stringToColor(lettersName) }} >{lettersName}</Avatar>:<Avatar /> }
               </IconButton>
             </Tooltip>
             <Menu
