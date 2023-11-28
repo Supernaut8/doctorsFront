@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 
 import { CSSTransition } from 'react-transition-group';
 import userActions from './redux/actions/usersActions';
+import PlanisDoctor from './components/plainsDoctor';
 
 export const urlBackend = "http://localhost:5000"
 
@@ -64,6 +65,7 @@ function App() {
           <Route path='/forgotPass' element={<ForgotPass />} />
           <Route path='/doctorExtend/:id' element={<DoctorCardExtended />} />
           <Route path='/profile' element ={<Profile/>}/>
+          <Route path="/plainsDoctor/:string" element={<PlanisDoctor/>}/>
         </Routes>
         <BottomAppBarMUI />
       </BrowserRouter>

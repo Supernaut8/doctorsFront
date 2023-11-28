@@ -53,7 +53,7 @@ const userActions = {
             await axios.get(`${urlBackend}/api/users/auth/verifyToken`,
             {headers:{"Authorization": "Bearer " + tokenSession}
             }).then(user=>{
-                console.log(user)
+               
                 if(user.data.success){
                     dispatch({type:"user",payload:user.data.response})
                     dispatch({
