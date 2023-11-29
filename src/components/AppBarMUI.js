@@ -146,7 +146,6 @@ function AppBarMUI() {
           <LocalHospitalIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'red' }} />
           <Typography
             variant="h5"
-            noWrap
             component="a"
             href="/"
             sx={{
@@ -158,6 +157,7 @@ function AppBarMUI() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              maxWidth: '350px'
             }}
           >
             DOCTOR FINDER

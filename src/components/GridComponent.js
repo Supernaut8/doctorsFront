@@ -15,66 +15,61 @@ function GridComponent() {
                 <div className="iconConten">
                     <LocalHospitalIcon className="icon" />
                 </div>
-                <div>Turnos Online</div>
-                <div>Ahora sacar turnos en nuestros centros de atención es mucho más fácil y rápido</div>
+                <div>Online Shifts</div>
+                <div>Now taking appointments at our service centers is much easier and faster.</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <BloodtypeIcon className="icon" />
                 </div>
-                <div>Resultados de Laboratorio</div>
-                <div>Solicitá tus resultados via web o consultalos online</div>
+                <div>Lab results</div>
+                <div>Request your results through the web or consult them online</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <MedicalInformationIcon className="icon" />
                 </div>
-                <div>Apto Médico</div>
-                <div>Obtené el certificado en el momento o via correo electrónico</div>
+                <div>Medical Apt</div>
+                <div>Get the certificate on the spot or by email</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <MedicalServicesIcon className="icon" />
                 </div>
-                <div>Guardia</div>
-                <div>Consultá por los especialistas</div>
+                <div>Medical guard</div>
+                <div>Consult the specialists</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <MasksIcon className="icon" />
                 </div>
                 <div>Dengue</div>
-                <div>Novedades e información</div>
+                <div>News and information</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <VaccinesIcon className="icon" />
                 </div>
-                <div>Vacunación</div>
-                <div>Gripe, Covid, Hepatitis, etc</div>
+                <div>Vaccination</div>
+                <div>Flu, Covid, Hepatitis, etc.</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <BloodtypeIcon className="icon"  />
                 </div>
-                <div>Donación de Sangre</div>
-                <div>Sedes cercanas a tu barrio</div>
+                <div>Blood donation</div>
+                <div>Headquarters near your location</div>
             </Grid>
             <Grid item className="grid-item">
                 <div className="iconConten">
                     <BloodtypeIcon className="icon" />
                 </div>
-                <div>Cursos y Capacitaciones</div>
-                <div>Mas info en...</div>
+                <div>Courses and Training</div>
+                <div>More info in...</div>
             </Grid>
-            <Grid item className="grid-item">
-                <div className="iconConten">
-                    <BloodtypeIcon className="icon" />
-                </div>
-                <div>Turnos Online</div>
-                <div>Ahora sacar turnos en nuestros centros de atención es mucho más fácil y rápido</div>
-            </Grid>
-            <Grid item className="grid-item">
+{/* CAMBIO */}
+
+            {/* <Grid item className="grid-item">
                 <div className="iconConten">
                     <BloodtypeIcon className="icon" />
                 </div>
@@ -92,9 +87,18 @@ function GridComponent() {
                 <div className="iconConten">
                     <BloodtypeIcon className="icon" />
                 </div>
-                <div>Horarios de visitas</div>
-                <div>Horarios</div>
+                <div>Turnos Online</div>
+                <div>Ahora sacar turnos en nuestros centros de atención es mucho más fácil y rápido</div>
             </Grid>
+            <Grid item className="grid-item">
+                <div className="iconConten">
+                    <BloodtypeIcon className="icon" />
+                </div>
+                <div>Visiting hours</div>
+                <div>Schedules</div>
+            </Grid> */}
+
+{/* CAMBIO */}
         </Grid>
     );
 }

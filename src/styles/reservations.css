@@ -4,10 +4,10 @@
     height: 100%;
 }
 
-/* .card-Detail {
+ .card-Detail {
     background-color: rgb(220, 232, 232);
     width: 100vw;
-} */
+} 
 
 .grid-cards {
     margin: 20px 0;
@@ -16,6 +16,7 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+    border: 1px solid #ddd;
 }
 
 .grid-card {
@@ -23,6 +24,10 @@
     border-radius: 10px;
     background-color: #1E4D7B;
  
+}
+
+.container_doctor {
+    border: 1px solid #ddd;
 }
 
 .logoContainer {

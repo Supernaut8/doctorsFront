@@ -24,7 +24,7 @@ function Home() {
             </div>
             <SwiperCarousel />
             <div className="cards-container">
-                <Typography variant="h2" style={{ fontFamily: 'Open Sans', fontSize: '30px' }}>INFORMACIÓN PARA EL PACIENTE</Typography>
+                <Typography variant="h2" style={{ fontFamily: 'Open Sans', fontSize: '30px' }}>INFORMATION FOR THE PATIENT</Typography>
                 <GridComponent />   
             </div>
         </>

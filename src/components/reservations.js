@@ -42,7 +42,6 @@ function Reservations() {
         <div className='searchMedics'>
             <div>
                 <Typography variant="p"
-                    noWrap
                     sx={{
                         mr: 2,
                         fontFamily: 'rubik', 
