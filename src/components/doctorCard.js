@@ -42,7 +42,7 @@ function DoctorCard({ doctor }) {
                     {/* <button className="buttons_cards">Details</button> */}
                     <Button variant="contained" style={{ fontFamily: 'Open Sans', backgroundColor: 'green' }}>Details</Button>
                 </LinkRouter>
-                <LinkRouter className='btn_details' to={`/doctorExtend/${doctor._id}`}>
+                <LinkRouter className='btn_details' to={`/plansDoctor/${doctor._id}`}>
                     <Button variant="contained" style={{ fontFamily: 'Open Sans', backgroundColor: 'red' }}>Plans</Button>
                     {/* <button className="buttons_cards button_plans">Plans</button> */}
                 </LinkRouter>

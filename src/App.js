@@ -12,14 +12,14 @@ import SignInForm from './components/signIn';
 import SignUpForm from './components/signUp';
 import ForgotPass from './components/forgotPass';
 import Insurances from './components/Insurances';
-import { Profile } from "./components/profileUser";
+import  Profile  from "./components/profileUser";
 import Snack from './components/snackbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { CSSTransition } from 'react-transition-group';
 import userActions from './redux/actions/usersActions';
-import PlanisDoctor from './components/plainsDoctor';
+import PlansDoctor from './components/plansDoctor';
 
 export const urlBackend = "http://localhost:5000"
 
@@ -65,7 +65,7 @@ function App() {
           <Route path='/forgotPass' element={<ForgotPass />} />
           <Route path='/doctorExtend/:id' element={<DoctorCardExtended />} />
           <Route path='/profile' element ={<Profile/>}/>
-          <Route path="/plainsDoctor/:string" element={<PlanisDoctor/>}/>
+          <Route path="/plansDoctor/:string" element={<PlansDoctor/>}/>
         </Routes>
         <BottomAppBarMUI />
       </BrowserRouter>
